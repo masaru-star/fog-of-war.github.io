@@ -1,0 +1,108 @@
+:root{--sea:#00ccff;--land:#ffffff;--ui:#0f172a;--accent:#34d399;--player:#22c55e;--ai1:#ef4444;--ai2:#3b82f6;--ai3:#f97316;--ai4:#8b5cf6;
+      /* AI 5-10 の色を追加 */
+      --ai5: #d946ef; /* fuchsia */
+      --ai6: #db2777; /* pink */
+      --ai7: #10b981; /* emerald */
+      --ai8: #f59e0b; /* amber */
+      --ai9: #6b7280; /* gray */
+      --ai10: #14b8a6; /* teal */
+  }
+  html,body{height:100%;margin:0;font-family:system-ui,-apple-system,"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;background:#071021;color:#e6eef6}
+  .wrap{display:flex;gap:12px;padding:12px}
+  canvas{background:#000;border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.6);cursor:pointer;
+        /* キーボードイベント(スクロール)を受け取るために必要 */
+        tabindex: 0; 
+        outline: none; /* フォーカス時の青枠を消す */
+    width: 1125px;
+    height: 810px;
+    flex-shrink: 0;
+  }
+  canvas:focus {
+      box-shadow: 0 8px 30px rgba(0,0,0,.6), 0 0 0 3px var(--accent); /* フォーカスが当たっていることを示す */
+  }
+  .sidebar{width:380px;background:linear-gradient(180deg,#071022 0%, #06131b 100%);border-radius:8px;padding:14px;box-shadow:0 8px 30px rgba(0,0,0,.6)}
+  h2{margin:6px 0 10px;color:var(--accent)}
+  .resources{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .res{background:#061726;padding:8px;border-radius:6px;font-size:14px}
+  .controls{margin-top:10px}
+  button,select,input{padding:8px;border-radius:6px;border:0;background:#0b2740;color:#fff;cursor:pointer}
+  button.small{padding:6px;font-size:13px}
+  button:disabled{opacity:.4;cursor:not-allowed}
+  .log{height:120px;overflow:auto;background:#04121a;padding:8px;border-radius:6px;margin-top:8px;font-size:13px}
+  .small{font-size:13px;color:#9fb3c8}
+  .map-legend{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
+  .legend-item{display:flex;align-items:center;gap:6px}
+  .swatch{width:18px;height:18px;border-radius:4px}
+  #countryNameInput, #aiCountSelect, #mapSizeSelect {width:100%;padding:8px;border-radius:6px;border:0;margin-bottom:8px;background:#061726;color:#fff}
+  #tileActions {display: flex; gap: 8px; margin-top: 8px; flex-wrap: wrap;}
+  #splitOverlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+  }
+  #splitForm {
+    background: var(--ui);
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--accent);
+    box-shadow: 0 8px 30px rgba(0,0,0,.6);
+    width: 300px;
+  }
+  #splitForm h3 {
+    margin-top: 0;
+    color: var(--accent);
+  }
+  .split-input-group {
+    display: grid;
+    grid-template-columns: 80px 1fr 60px;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+  .split-input-group input {
+    width: 100%;
+    padding: 6px;
+    background: #061726;
+  }
+  .split-input-group label {
+    color: #9fb3c8;
+  }
+.scroll-buttons-container {
+    margin-top: 15px;
+    display: grid;
+    grid-template-areas: 
+        ". up ." 
+        "left center right" 
+        ". down .";
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    width: 150px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.scroll-button {
+    padding: 10px 5px;
+    border-radius: 6px;
+    border: 0;
+    background: #0b2740;
+    color: var(--accent);
+    cursor: pointer;
+    font-size: 16px;
+    line-height: 1;
+    transition: background 0.1s;
+}
+
+.scroll-button:hover {
+    background: #1c3d5e;
+}
+
+#scrollUp { grid-area: up; }
+#scrollLeft { grid-area: left; }
+#scrollRight { grid-area: right; }
+#scrollDown { grid-area: down; }
